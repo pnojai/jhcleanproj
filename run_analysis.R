@@ -19,4 +19,16 @@ dateDownloaded #  "Mon Feb 11 13:25:25 2019"
 
 # Manually unzipped to ./Data
 
+# Explore the test data and train data.
+xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 1683), header = FALSE)
+ytest <- read.fwf("./Data/test/y_test.txt", widths = 16, header = FALSE)
 
+str(xtest)
+
+head(xtest, 2)
+head(ytest, 2)
+
+
+nrow(xtest)
+
+xtest[1]

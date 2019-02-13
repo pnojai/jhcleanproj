@@ -19,18 +19,26 @@ dateDownloaded #  "Mon Feb 11 13:25:25 2019"
 
 # Manually unzipped to ./Data
 
-# Visual examination of data
+# Load reference data: Activity labels.
+activity <- read.csv("Data/activity_labels.txt", header = FALSE, sep = " ")
+names(activity) <- c("activityID", "description")
 
-# Explore the test data and train data.
-xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 1683), header = FALSE)
-ytest <- read.fwf("./Data/test/y_test.txt", widths = 16, header = FALSE)
+# Correct misspelling of activity, "LAYING". It's a factor, so you have to rename it to do that.
+levels(activity$description)[levels(activity$description) == "LAYING"] <- "LYING"
+levels(activity$description)
+activity
 
-str(xtest)
+# Load reference data: 
+#Load test data.
+# Feature data
+xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 561), header = FALSE)
 
-head(xtest, 2)
-head(ytest, 2)
+# Uncomment to view and verify loading
+# str(xtest)
+# head(xtest, 2)
+# nrow(xtest)
+# xtest[1:2, 1:2]
+# names(xtest)
 
+#ytest <- read.fwf("./Data/test/y_test.txt", widths = 16, header = FALSE)
 
-nrow(xtest)
-
-xtest[1]

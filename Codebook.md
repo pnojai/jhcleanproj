@@ -6,13 +6,22 @@ The data and its documentation were provided as a link in the project assignment
 
 The file README.txt describes the experiment, Human Activity Recognition Using Smartphones, and it describes the contents of the dataset. The experimental data was divided by the researchers into a training set and a test set. The layout of the files is the same in each set, so I examined the test set which is smaller.
 
-I examined the data files using a plaintext editor in order to determine the layout and delimiters. The file "X_test.txt" has no header, the numeric values are expressed in scientific notation, and the columns are fixed width. My text editor, Emacs, has counting functions that provided metrics about the layout.
+The language of the README.txt document required clarification. It documented the contents of each "record," which include accelerometer measurments from the smartphone, a 561-feature vector of variables in the time and frequency domains, etc. In strict data terms, the word "record" is misleading. Rather, there are multiple files whose records relate by sequence of observation. A better understanding is to interpret the word "record" as "recording," that is to say that for each recording of a test subject's experimental actions, the measurements are written to several related files.
+
+The data files appear to relate by sequence of observation rather than by primary key / foreign key relationships. I validated this assumption by opening the various test files in Emacs by turn and counting the rows. Each of the following test data files contains 2947 records.
+
+* X_test.txt. The 561-variable vector of time and frequency domain features.
+* y_test.txt. Activity for each observation.
+* subject_test.txt. Identifies the subject performing the observed activity.
+* Files in the directory, InertialSignals. Each of 3 inertial signals is recorded in its own file, and one for each of the 3 axes of dimensional space, yielding a total of 9 files.
+
+I examined the data files using a plaintext editor in order to determine the layout and delimiters. The examination determined that the file "X_test.txt" has no header, the numeric values are expressed in scientific notation, and the columns are fixed width. My text editor, Emacs, has counting functions that provided metrics about the layout.
 
 **X_test.txt**
 
 * One column contains 16 characters. Emacs counts the data point as 3 words.
-* One row contains 1683 words which, divided by 3, suggests there are 561 columns in a row.
-* One row contains 8976 characters which, divided by 16 also suggests there are 561 columns.
+* One row contains 1683 words which, divided by 3 words per data point, suggests there are 561 columns in a row.
+* One row contains 8976 characters which, divided by an observed 16 characters per column, also suggests there are 561 columns.
 * A format of 561 columns, suggested by examination of the file, is consistent with the README.txt document and its reference to each record containing a 561-feature vector.
 * The row count is 2947.
 
@@ -20,14 +29,10 @@ I examined the data files using a plaintext editor in order to determine the lay
 
 The contents of this file identify the 561 variables recorded in the columns of the file X_test.txt.
 
-**Data archive**
+**y_test.txt**
 
-The language of the README.txt document required clarification. It documented the contents of each "record," which include accelerometer measurments from the smartphone, a 561-feature vector of variables in the time and frequency domains, etc. In strict data terms, the word "record" is misleading. Rather, there are multiple files whose records relate by sequence of observation. A better understanding is to interpret the word "record" as "recording," in other words "observation." The data files appear to relate by sequence of observation rather than by primary key / foreign key relationships. I validated this assumption by opening the various test files in Emacs by turn and counting the rows. Each of the following test data files contains 2947 records.
+The activity label code associated with each observation of features in X_test.txt. The decoded descriptions of label codes are in the file activity_labels.txt.
 
-* X_test.txt. The 561-variable vector of time and frequency domain features.
-* y_test.txt. Activity for each observation.
-* subject_test.txt. Identifies the subject performing the observed activity.
-* Files in the directory, InertialSignals. Each of 3 inertial signals is recorded in its own file, and one for each of the 3 axes of dimensional space, yielding a total of 9 files.
 
 **activity_lables.txt**
 
@@ -35,7 +40,7 @@ Identifies the 6 activities performed by the test subjects, including walking an
 
 **body_acc_x_test.txt**
 
-Validated the format using my plaintext editor, Emacs, as I did for the file X_test.txt.
+I validated the format using my plaintext editor, Emacs, as I did for the file X_test.txt.
 
 * One column contains 16 characters. Emacs counts the data point as 3 words.
 * One row contains 384 words which, divided by 3, suggests there are 128 columns in a row.

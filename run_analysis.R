@@ -28,7 +28,34 @@ levels(activity$description)[levels(activity$description) == "LAYING"] <- "LYING
 levels(activity$description)
 activity
 
-# Load reference data: 
+# Load reference data: feature names
+# These will become the variable names in the data frame for combined test anFd train data.
+# Don't load as factors.
+features <- read.csv("Data/features.txt", header = FALSE, sep = " ", stringsAsFactors = FALSE)
+# Copy the description for transformation.
+features <- cbind(features, features$V2, stringsAsFactors = FALSE)
+names(features) <- c("featureID", "feature", "featureXForm")
+
+# Transform the feature name.
+# Change the hyphens to underscores.
+# Remove the parentheses.
+# Remove commas.
+features$featureXForm <- gsub("[-,]", "_", features$featureXForm)
+features$featureXForm <- gsub("\\()", "", features$featureXForm)
+# Change ( and ) for angle variable names to underscord
+features$featureXForm <- gsub("[\\(]", "_", features$featureXForm)
+# Drop trailing )
+features$featureXForm <- gsub("[\\)$]", "", features$featureXForm)
+
+# Are there any remaining "(" ?
+grep("\\(", features$featureXForm)
+# No.
+
+features[1:250,]
+features[features$featureID>250, ]
+
+# featureXform will be the variable names for the test and train data frame.
+
 #Load test data.
 # Feature data
 xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 561), header = FALSE)
@@ -39,6 +66,47 @@ xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 561), header = FALS
 # nrow(xtest)
 # xtest[1:2, 1:2]
 # names(xtest)
+
+# The columns in xtest are ready for naming using the transformed features.
+# Both number 561.
+ncol(xtest)
+nrow(features)
+
+nrow(xtest)
+names(xtest) <- features$featureXForm
+
+# Add a column to identify the source of the data, test or train.
+xtest <- cbind(source = "TEST", xtest)
+# Add a column as a unique identifier for the test observations.
+xtest <- cbind(rowid = seq_along(xtest[ , 1]), xtest)
+
+head(xtest[ , 1:3])
+tail(xtest[ , 1:3])
+
+# Load the train data and set it up like test.
+xtrain <- read.fwf("./Data/train/X_train.txt", widths = rep(16, 561), header = FALSE)
+
+# Uncomment to view and verify loading
+# str(xtest)
+# head(xtest, 2)
+# nrow(xtest)
+# xtest[1:2, 1:2]
+# names(xtest)
+
+# The columns in xtrain are ready for naming using the transformed features.
+# Both number 561.
+ncol(xtrain)
+nrow(features)
+
+names(xtrain) <- features$featureXForm
+
+# Add a column to identify the source of the data, test or train.
+xtrain <- cbind(source = "TRAIN", xtrain)
+# Add a column as a unique identifier for the test observations.
+xtrain <- cbind(rowid = seq_along(xtrain[ , 1]), xtrain)
+
+head(xtrain[ , 1:3])
+tail(xtrain[ , 1:3])
 
 #ytest <- read.fwf("./Data/test/y_test.txt", widths = 16, header = FALSE)
 

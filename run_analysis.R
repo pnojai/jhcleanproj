@@ -29,7 +29,7 @@ levels(activity$description)
 activity
 
 # Load reference data: feature names
-# These will become the variable names in the data frame for combined test anFd train data.
+# These will become the variable names in the data frame for combined test and train data.
 # Don't load as factors.
 features <- read.csv("Data/features.txt", header = FALSE, sep = " ", stringsAsFactors = FALSE)
 # Copy the description for transformation.
@@ -42,7 +42,7 @@ names(features) <- c("featureID", "feature", "featureXForm")
 # Remove commas.
 features$featureXForm <- gsub("[-,]", "_", features$featureXForm)
 features$featureXForm <- gsub("\\()", "", features$featureXForm)
-# Change ( and ) for angle variable names to underscord
+# Change ( and ) for angle variable names to underscore.
 features$featureXForm <- gsub("[\\(]", "_", features$featureXForm)
 # Drop trailing )
 features$featureXForm <- gsub("[\\)$]", "", features$featureXForm)
@@ -51,6 +51,7 @@ features$featureXForm <- gsub("[\\)$]", "", features$featureXForm)
 grep("\\(", features$featureXForm)
 # No.
 
+# Inspect the transformations of the variable names.
 features[1:250,]
 features[features$featureID>250, ]
 
@@ -72,7 +73,6 @@ xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 561), header = FALS
 ncol(xtest)
 nrow(features)
 
-nrow(xtest)
 names(xtest) <- features$featureXForm
 
 # Add a column to identify the source of the data, test or train.
@@ -87,11 +87,11 @@ tail(xtest[ , 1:3])
 xtrain <- read.fwf("./Data/train/X_train.txt", widths = rep(16, 561), header = FALSE)
 
 # Uncomment to view and verify loading
-# str(xtest)
-# head(xtest, 2)
-# nrow(xtest)
-# xtest[1:2, 1:2]
-# names(xtest)
+# str(xtrain)
+# head(xtrain, 2)
+# nrow(xtrain)
+# xtrain[1:2, 1:2]
+# names(xtrain)
 
 # The columns in xtrain are ready for naming using the transformed features.
 # Both number 561.
@@ -102,11 +102,14 @@ names(xtrain) <- features$featureXForm
 
 # Add a column to identify the source of the data, test or train.
 xtrain <- cbind(source = "TRAIN", xtrain)
-# Add a column as a unique identifier for the test observations.
+# Add a column as a unique identifier for the train observations.
 xtrain <- cbind(rowid = seq_along(xtrain[ , 1]), xtrain)
 
 head(xtrain[ , 1:3])
 tail(xtrain[ , 1:3])
+
+# I am to analyze only the means and standard deviations
+
 
 #ytest <- read.fwf("./Data/test/y_test.txt", widths = 16, header = FALSE)
 

@@ -78,10 +78,14 @@ names(xtest) <- features$featureXForm
 # Add a column to identify the source of the data, test or train.
 xtest <- cbind(source = "TEST", xtest)
 # Add a column as a unique identifier for the test observations.
-xtest <- cbind(rowid = seq_along(xtest[ , 1]), xtest)
+xtest <- cbind(sourceid = seq_along(xtest[ , 1]), xtest)
 
-head(xtest[ , 1:3])
-tail(xtest[ , 1:3])
+# Add the subjects for the observations.
+subjecttest <- read.csv("Data/test/subject_test.txt", header = FALSE)
+xtest <- cbind(xtest, subject = subjecttest)
+
+head(xtest[ , c(1:3, 563:564)])
+tail(xtest[ , c(1:3, 563:564)])
 
 # Load the train data and set it up like test.
 xtrain <- read.fwf("./Data/train/X_train.txt", widths = rep(16, 561), header = FALSE)
@@ -103,7 +107,7 @@ names(xtrain) <- features$featureXForm
 # Add a column to identify the source of the data, test or train.
 xtrain <- cbind(source = "TRAIN", xtrain)
 # Add a column as a unique identifier for the train observations.
-xtrain <- cbind(rowid = seq_along(xtrain[ , 1]), xtrain)
+xtrain <- cbind(sourceid = seq_along(xtrain[ , 1]), xtrain)
 
 head(xtrain[ , 1:3])
 tail(xtrain[ , 1:3])

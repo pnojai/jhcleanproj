@@ -1,4 +1,5 @@
 # Set up the project and get the data.
+library(plyr) # Need this for join().
 
 # Create target directory.
 if (!dir.exists("./Data")) {
@@ -21,7 +22,7 @@ dateDownloaded #  "Mon Feb 11 13:25:25 2019"
 
 # Load reference data: Activity labels.
 activity <- read.csv("Data/activity_labels.txt", header = FALSE, sep = " ")
-names(activity) <- c("activityID", "description")
+names(activity) <- c("activityid", "description")
 
 # Correct misspelling of activity, "LAYING". It's a factor, so you have to rename it to do that.
 levels(activity$description)[levels(activity$description) == "LAYING"] <- "LYING"
@@ -58,7 +59,7 @@ features[features$featureID>250, ]
 # featureXform will be the variable names for the test and train data frame.
 
 #Load test data.
-# Feature data
+# Test 1. Feature data
 xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 561), header = FALSE)
 
 # Uncomment to view and verify loading
@@ -68,35 +69,46 @@ xtest <- read.fwf("./Data/test/X_test.txt", widths = rep(16, 561), header = FALS
 # xtest[1:2, 1:2]
 # names(xtest)
 
+# Test 2.
 # The columns in xtest are ready for naming using the transformed features.
 # Both number 561.
 ncol(xtest)
 nrow(features)
-
 names(xtest) <- features$featureXForm
 
+# Test 3.
 # Add a column to identify the source of the data, test or train.
 xtest <- cbind(source = "TEST", xtest)
+
+# Test 4.
 # Add a column as a unique identifier for the test observations.
 xtest <- cbind(sourceid = seq_along(xtest[ , 1]), xtest)
 
+# Test 5.
 # Add the subjects for the observations.
 subjecttest <- read.csv("Data/test/subject_test.txt", header = FALSE)
-xtest <- cbind(xtest, subject = subjecttest)
+xtest <- cbind(xtest, subject = subjecttest$V1)
 
 head(xtest[ , c(1:3, 563:564)])
 tail(xtest[ , c(1:3, 563:564)])
 
+# Test 6.
+# Add the activities for the observations
+ytest <- read.csv("Data/test/y_test.txt", header = FALSE)
+xtest <- cbind(xtest, activityid = ytest$V1)
+
+head(xtest[ , c(1:3, 563:565)])
+tail(xtest[ , c(1:3, 563:565)])
+
+# Test 7.
+# Join the activity descriptions.
+intersect(names(xtest), names(activity))
+xtest <- join(xtest, activity)
+
+head(xtest[ , c(1:3, 563:566)])
+tail(xtest[ , c(1:3, 563:566)])
+
 # Load the train data and set it up like test.
-xtrain <- read.fwf("./Data/train/X_train.txt", widths = rep(16, 561), header = FALSE)
-
-# Uncomment to view and verify loading
-# str(xtrain)
-# head(xtrain, 2)
-# nrow(xtrain)
-# xtrain[1:2, 1:2]
-# names(xtrain)
-
 # The columns in xtrain are ready for naming using the transformed features.
 # Both number 561.
 ncol(xtrain)
@@ -116,4 +128,54 @@ tail(xtrain[ , 1:3])
 
 
 #ytest <- read.fwf("./Data/test/y_test.txt", widths = 16, header = FALSE)
+
+#Load train data.
+# Train 1. Feature data
+xtrain <- read.fwf("./Data/train/X_train.txt", widths = rep(16, 561), header = FALSE)
+
+# Uncomment to view and verify loading
+# str(xtest)
+# head(xtest, 2)
+# nrow(xtest)
+# xtest[1:2, 1:2]
+# names(xtest)
+
+# Train 2.
+# The columns in xtrain are ready for naming using the transformed features.
+# Both number 561.
+ncol(xtrain)
+nrow(features)
+names(xtest) <- features$featureXForm
+
+# Test 3.
+# Add a column to identify the source of the data, test or train.
+xtest <- cbind(source = "TEST", xtest)
+
+# Test 4.
+# Add a column as a unique identifier for the test observations.
+xtest <- cbind(sourceid = seq_along(xtest[ , 1]), xtest)
+
+# Test 5.
+# Add the subjects for the observations.
+subjecttest <- read.csv("Data/test/subject_test.txt", header = FALSE)
+xtest <- cbind(xtest, subject = subjecttest$V1)
+
+head(xtest[ , c(1:3, 563:564)])
+tail(xtest[ , c(1:3, 563:564)])
+
+# Test 6.
+# Add the activities for the observations
+ytest <- read.csv("Data/test/y_test.txt", header = FALSE)
+xtest <- cbind(xtest, activityid = ytest$V1)
+
+head(xtest[ , c(1:3, 563:565)])
+tail(xtest[ , c(1:3, 563:565)])
+
+# Test 7.
+# Join the activity descriptions.
+intersect(names(xtest), names(activity))
+xtest <- join(xtest, activity)
+
+head(xtest[ , c(1:3, 563:566)])
+tail(xtest[ , c(1:3, 563:566)])
 

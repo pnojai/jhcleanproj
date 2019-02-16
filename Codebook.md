@@ -4,7 +4,7 @@
 ### Review of documentation and data
 The data and its documentation were provided as a link in the project assignment to a zip archive. I downloaded and unzipped the archive into the project Data directory.
 
-The file README.txt describes the experiment, Human Activity Recognition Using Smartphones, and it describes the contents of the dataset. The experimental data was divided by the researchers into a training set and a test set. The layout of the files is the same in each set, so I examined the test set which is smaller.
+The dataset includes the file, README.txt. This is a distinct file from the document, README.md, located in the working directory of the project repository. The dataset file, README.txt, describes the experiment, Human Activity Recognition Using Smartphones, and it describes the contents of the dataset. The experimental data was divided by the researchers into a training set and a test set. The layout of the files is the same in each set, so I examined the test set which is smaller.
 
 The language of the README.txt document required clarification. It documented the contents of each "record," which include accelerometer measurments from the smartphone, a 561-feature vector of variables in the time and frequency domains, etc. In strict data terms, the word "record" is misleading. Rather, there are multiple files whose records relate by sequence of observation. A better understanding is to interpret the word "record" as "recording," that is to say that for each recording of a test subject's experimental actions, the measurements are written to several related files.
 
@@ -15,7 +15,7 @@ The data files appear to relate by sequence of observation rather than by primar
 * subject_test.txt. Identifies the subject performing the observed activity.
 * Files in the directory, InertialSignals. Each of 3 inertial signals is recorded in its own file, and one for each of the 3 axes of dimensional space, yielding a total of 9 files.
 
-I examined the data files using a plaintext editor in order to determine the layout and delimiters. The examination determined that the file "X_test.txt" has no header, the numeric values are expressed in scientific notation, and the columns are fixed width. My text editor, Emacs, has counting functions that provided metrics about the layout.
+I examined the data files using a plaintext editor in order to determine the layout and delimiters. The examination determined that the file "X_test.txt" has no header or delimiter, the numeric values are expressed in scientific notation, and the columns are fixed width. My text editor, Emacs, has counting functions that provided metrics about the layout, as follows.
 
 **X_test.txt**
 
@@ -33,10 +33,9 @@ The contents of this file identify the 561 variables recorded in the columns of 
 
 The activity label code associated with each observation of features in X_test.txt. The decoded descriptions of label codes are in the file activity_labels.txt.
 
-
 **activity_lables.txt**
 
-Identifies the 6 activities performed by the test subjects, including walking and sitting. I noted a misleading choice of words for one of the activities, identified as "LAYING." The word "lay" is a transitive verb which means to put something down. The word "lie" is an intransitive verb referring to reclining. The website for the research linked to a video taken of one of the test observations. There appeared to be no activity in which the subject held an object and put it down. However, the subject did recline on a table in the course of the test and elsewhere in the documentation the researchers referred to the activity of "laying down." The activity label is an error of English usage on the part of the researchers and the intention was "LYING."
+Identifies the 6 activities performed by the test subjects, including walking and sitting. I noted a misleading choice of words for one of the activities, identified as "LAYING." The word "lay" is a transitive verb which means to put something down. The word "lie" is an intransitive verb referring to reclining. The website for the research linked to a video taken of one of the test observations. There appeared to be no activity in which the subject held an object and put it down. However, the subject did recline on a table in the course of the test and elsewhere in the documentation the researchers referred to the activity of "laying down." The activity label is an error of English usage on the part of the researchers and the intention appears to have been "LYING."
 
 **body_acc_x_test.txt**
 
@@ -50,3 +49,6 @@ I validated the format using my plaintext editor, Emacs, as I did for the file X
 
 ### Scope of analysis
 This data analysis project merges training and test datasets. It extracts means and standard deviations, which appear in the features recorded in files X_test.txt and X_train.txt. The researchers derived these features from inertial signals recorded in the files in the directories InertialSignals. The inertial signal data are, therefore, raw data which I disregarded for the scope of this analysis, relying instead on the feature data only.
+
+### Variable names
+names(activity_subject_means)

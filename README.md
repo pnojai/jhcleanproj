@@ -1,6 +1,17 @@
 # jhcleanproj
 ## Getting and Cleaning Data Course Project
 
+This repository satisfies the requirements of the final project for the course, Getting and Cleaning Data, in the Data Science Specialization track from Johns Hopkins University on Coursera. The purpose of the project is to analyze Human Activity Recognition data for smartphones.
+
+The deliverables for the project are:
+
+1. This README.md file. Explanation of the project.
+2. Codebook.md. Describes the data set and how I examined and manipulated the data.
+3. run_analysis.R. The main executable.
+
+Note that the repository does not include the data set under analysis due to considerations of licensing and space. The executable creates a directory and downloads the data from a URL provided in the course assignment.
+
+## Text of the assignment
 The purpose of this project is to demonstrate your ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. You will be graded by your peers on a series of yes/no questions related to the project. You will be required to submit:
 
 1. a tidy data set as described below,

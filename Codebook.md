@@ -68,85 +68,87 @@ I manipulated the feature names in the file, features.txt, to form suitable vari
 
 The variables in the output file, activity_subject_means.txt, are as follows.
 
-* activitydescription
-* subject
-* tBodyAcc_mean_X              
-* tBodyAcc_mean_Y
-* tBodyAcc_mean_Z
-* tBodyAcc_std_X               
-* tBodyAcc_std_Y
-* tBodyAcc_std_Z
-* tGravityAcc_mean_X           
-* tGravityAcc_mean_Y
-* tGravityAcc_mean_Z
-* tGravityAcc_std_X            
-* tGravityAcc_std_Y
-* tGravityAcc_std_Z
-* tBodyAccJerk_mean_X          
-* tBodyAccJerk_mean_Y
-* tBodyAccJerk_mean_Z
-* tBodyAccJerk_std_X           
-* tBodyAccJerk_std_Y
-* tBodyAccJerk_std_Z
-* tBodyGyro_mean_X             
-* tBodyGyro_mean_Y
-* tBodyGyro_mean_Z
-* tBodyGyro_std_X              
-* tBodyGyro_std_Y
-* tBodyGyro_std_Z
-* tBodyGyroJerk_mean_X         
-* tBodyGyroJerk_mean_Y
-* tBodyGyroJerk_mean_Z
-* tBodyGyroJerk_std_X          
-* tBodyGyroJerk_std_Y
-* tBodyGyroJerk_std_Z
-* tBodyAccMag_mean             
-* tBodyAccMag_std
-* tGravityAccMag_mean
-* tGravityAccMag_std           
-* tBodyAccJerkMag_mean
-* tBodyAccJerkMag_std
-* tBodyGyroMag_mean            
-* tBodyGyroMag_std
-* tBodyGyroJerkMag_mean
-* tBodyGyroJerkMag_std         
-* fBodyAcc_mean_X
-* fBodyAcc_mean_Y
-* fBodyAcc_mean_Z              
-* fBodyAcc_std_X
-* fBodyAcc_std_Y
-* fBodyAcc_std_Z               
-* fBodyAcc_meanFreq_X
-* fBodyAcc_meanFreq_Y
-* fBodyAcc_meanFreq_Z          
-* fBodyAccJerk_mean_X
-* fBodyAccJerk_mean_Y
-* fBodyAccJerk_mean_Z          
-* fBodyAccJerk_std_X
-* fBodyAccJerk_std_Y
-* fBodyAccJerk_std_Z           
-* fBodyAccJerk_meanFreq_X
-* fBodyAccJerk_meanFreq_Y
-* fBodyAccJerk_meanFreq_Z      
-* fBodyGyro_mean_X
-* fBodyGyro_mean_Y
-* fBodyGyro_mean_Z             
-* fBodyGyro_std_X
-* fBodyGyro_std_Y
-* fBodyGyro_std_Z              
-* fBodyGyro_meanFreq_X
-* fBodyGyro_meanFreq_Y
-* fBodyGyro_meanFreq_Z         
-* fBodyAccMag_mean
-* fBodyAccMag_std
-* fBodyAccMag_meanFreq         
-* fBodyBodyAccJerkMag_mean
-* fBodyBodyAccJerkMag_std
-* fBodyBodyAccJerkMag_meanFreq 
-* fBodyBodyGyroMag_mean
-* fBodyBodyGyroMag_std
-* fBodyBodyGyroMag_meanFreq    
-* fBodyBodyGyroJerkMag_mean
-* fBodyBodyGyroJerkMag_std
-* fBodyBodyGyroJerkMag_meanFreq
+Variable               | Definition
+-----------------------| -------------------------------------------
+activitydescription| Description of experimental activity
+subject | Experimental subject, identified by integer code
+tBodyAcc_mean_X | Mean of time domain body acceleration mean in the x axis
+tBodyAcc_mean_Y | Mean of time domain body acceleration mean in the y axis
+tBodyAcc_mean_Z | Mean of time domain body acceleration mean in the z axis
+tBodyAcc_std_X | Mean of time domain body acceleration standard deviation in the x axis
+tBodyAcc_std_Y | Mean of time domain body acceleration standard deviation in the y axis
+tBodyAcc_std_Z | Mean of time domain body acceleration standard deviation in the z axis
+tGravityAcc_mean_X | Mean of time domain gravity acceleration mean in the x axis
+tGravityAcc_mean_Y | Mean of time domain gravity acceleration mean in the y axis
+tGravityAcc_mean_Z | Mean of time domain gravity acceleration mean in the z axis
+tGravityAcc_std_X | Mean of time domain gravity acceleration standard deviation in the x axis
+tGravityAcc_std_Y | Mean of time domain gravity acceleration standard deviation in the y axis
+tGravityAcc_std_Z | Mean of time domain gravity acceleration standard deviation in the z axis
+tBodyAccJerk_mean_X | Mean of time domain body acceleration jerk mean in the x axis
+tBodyAccJerk_mean_Y | Mean of time domain body acceleration jerk mean in the y axis
+tBodyAccJerk_mean_Z | Mean of time domain body acceleration jerk mean in the z axis
+tBodyAccJerk_std_X | Mean of time domain body acceleration jerk standard deviation in the x axis
+tBodyAccJerk_std_Y | Mean of time domain body acceleration jerk standard deviation in the y axis
+tBodyAccJerk_std_Z | Mean of time domain body acceleration jerk standard deviation in the z axis
+tBodyGyro_mean_X | Mean of time domain body gyroscope mean in the x axis
+tBodyGyro_mean_Y | Mean of time domain body gyroscope mean in the y axis
+tBodyGyro_mean_Z | Mean of time domain body gyroscope mean in the z axis
+tBodyGyro_std_X | Mean of time domain body gyroscope standard deviation in the x axis
+tBodyGyro_std_Y | Mean of time domain body gyroscope standard deviation in the y axis
+tBodyGyro_std_Z | Mean of time domain body gyroscope standard deviation in the z axis
+tBodyGyroJerk_mean_X | Mean of time domain body gyroscope jerk mean in the x axis
+tBodyGyroJerk_mean_Y | Mean of time domain body gyroscope jerk mean in the y axis
+tBodyGyroJerk_mean_Z | Mean of time domain body gyroscope jerk mean in the z axis
+tBodyGyroJerk_std_X | Mean of time domain body gyroscope jerk standard deviation in the x axis
+tBodyGyroJerk_std_Y | Mean of time domain body gyroscope jerk standard deviation in the y axis
+tBodyGyroJerk_std_Z | Mean of time domain body gyroscope jerk standard deviation in the z axis
+tBodyAccMag_mean | Mean of time domain body acceleration magnitude mean
+tBodyAccMag_std | Mean of time domain body acceleration magnitude standard deviation
+tGravityAccMag_mean | Mean of time domain gravity acceleration magnitude mean
+tGravityAccMag_std | Mean of time domain gravity acceleration magnitude standard deviation
+tBodyAccJerkMag_mean | Mean of time domain body acceleration jerk magnitude mean
+tBodyAccJerkMag_std | Mean of time domain body acceleration jerk magnitude standard deviation
+tBodyGyroMag_mean | Mean of time domain body gyroscope magnitude mean
+tBodyGyroMag_std | Mean of time domain body gyroscope magnitude standard deviation
+tBodyGyroJerkMag_mean | Mean of time domain body gyroscope jerk magnitude mean
+tBodyGyroJerkMag_std | Mean of time domain body gyroscope jerk magnitude standard deviation
+fBodyAcc_mean_X | Mean of frequency domain body acceleration mean in the x axis
+fBodyAcc_mean_Y | Mean of frequency domain body acceleration mean in the y axis
+fBodyAcc_mean_Z | Mean of frequency domain body acceleration mean in the z axis
+fBodyAcc_std_X | Mean of frequency domain body acceleration standard deviation in the x axis
+fBodyAcc_std_Y | Mean of frequency domain body acceleration standard deviation in the y axis
+fBodyAcc_std_Z | Mean of frequency domain body acceleration standard deviation in the z axis
+fBodyAcc_meanFreq_X | Mean of frequency domain body acceleration mean frequency in the x axis
+fBodyAcc_meanFreq_Y | Mean of frequency domain body acceleration mean frequency in the y axis
+fBodyAcc_meanFreq_Z | Mean of frequency domain body acceleration mean frequency in the z axis
+fBodyAccJerk_mean_X | Mean of frequency domain body acceleration jerk mean in the x axis
+fBodyAccJerk_mean_Y | Mean of frequency domain body acceleration jerk mean in the y axis
+fBodyAccJerk_mean_Z | Mean of frequency domain body acceleration jerk mean in the z axis
+fBodyAccJerk_std_X | Mean of frequency domain body acceleration jerk standard deviation in the x axis
+fBodyAccJerk_std_Y | Mean of frequency domain body acceleration jerk standard deviation in the y axis
+fBodyAccJerk_std_Z | Mean of frequency domain body acceleration jerk standard deviation in the z axis
+fBodyAccJerk_meanFreq_X | Mean of frequency domain body acceleration jerk mean frequency in the x axis
+fBodyAccJerk_meanFreq_Y | Mean of frequency domain body acceleration jerk mean frequency in the y axis
+fBodyAccJerk_meanFreq_Z | Mean of frequency domain body acceleration jerk mean frequency in the z axis
+fBodyGyro_mean_X | Mean of frequency domain body gyroscope mean in the x axis
+fBodyGyro_mean_Y | Mean of frequency domain body gyroscope mean in the y axis
+fBodyGyro_mean_Z | Mean of frequency domain body gyroscope mean in the z axis
+fBodyGyro_std_X | Mean of frequency domain body gyroscope standard deviation in the x axis
+fBodyGyro_std_Y | Mean of frequency domain body gyroscope standard deviation in the y axis
+fBodyGyro_std_Z | Mean of frequency domain body gyroscope standard deviation in the z axis
+fBodyGyro_meanFreq_X | Mean of frequency domain body gyroscope mean frequency in the x axis
+fBodyGyro_meanFreq_Y | Mean of frequency domain body gyroscope mean frequency in the y axis
+fBodyGyro_meanFreq_Z | Mean of frequency domain body gyroscope mean frequency in the z axis
+fBodyAccMag_mean | Mean of frequency domain body acceleration magnitude mean
+fBodyAccMag_std | Mean of frequency domain body acceleration magnitude standard deviation
+fBodyAccMag_meanFreq | Mean of frequency domain body acceleration magnitude mean frequency
+fBodyBodyAccJerkMag_mean | Mean of frequency domain body acceleration jerk magnitude mean
+fBodyBodyAccJerkMag_std | Mean of frequency domain body acceleration jerk magnitude standard deviation
+fBodyBodyAccJerkMag_meanFreq | Mean of frequency domain body acceleration jerk magnitude mean frequency
+fBodyBodyGyroMag_mean | Mean of frequency domain body gyroscope magnitude mean
+fBodyBodyGyroMag_std | Mean of frequency domain body gyroscope magnitude standard deviation
+fBodyBodyGyroMag_meanFreq | Mean of frequency domain body gyroscope magnitude mean frequency
+fBodyBodyGyroJerkMag_mean | Mean of frequency domain body gyroscope magnitude mean
+fBodyBodyGyroJerkMag_std | Mean of frequency domain body gyroscope magnitude standard deviation
+fBodyBodyGyroJerkMag_meanFreq | Mean of frequency domain body gyroscope magnitude mean frequency
  
